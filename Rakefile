@@ -5,7 +5,9 @@ task :change do
 end
 
 task :push do
-  `scp -r public/* girvine@192.168.1.73:/usr/share/nginx/www/quote`
+  `git push`
+  `ssh girvine@192.168.1.73 'cd /guyirvine.com/quote && git pull'`
+  # `scp -r public/* girvine@192.168.1.73:/usr/share/nginx/www/quote`
 end
 
 Rake::TestTask.new do |t|
