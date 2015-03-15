@@ -38,6 +38,15 @@
                 font-size: 1.2em;
             }
 
+            #contact ul {
+              padding-left: 0;
+              margin-bottom: 0;
+            }
+            #contact li {
+              list-style: none;
+            }
+
+
             #contact a {
                 text-decoration: none;
             }
@@ -67,6 +76,14 @@
           bottom: 15px;
           left: 15px;
         }
+
+        #contact li {
+          display: inline;
+        }
+        #contact a.handle {
+          display: block;
+        }
+
 	    }
 
 	    -->
@@ -77,10 +94,11 @@
 
         <div id="content"></div>
         <div id="contact">
-            <a href="http://twitter.com/#!/guyirvine" class="handle" title="www">@guyirvine</a><br>
-            g: <a href="https://github.com/guyirvine" title="github">github.com/guyirvine</a><br>
-            e: <a href="mailto:guy@guyirvine.com/" title="email">guy@guyirvine.com</a><br>
-            t: <a href="http://guyirvine.tumblr.com/" title="blog">guyirvine.tumblr.com</a><br>
+            <ul>
+              <li><a href="http://twitter.com/#!/guyirvine" class="handle" title="www">@guyirvine</a></li>
+              <li>g: <a href="https://github.com/guyirvine" title="github">github.com/guyirvine</a></li>
+              <li>e: <a href="mailto:guy@guyirvine.com/" title="email">guy@guyirvine.com</a></li>
+            </ul>
         </div>
 
         <script>
