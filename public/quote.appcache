@@ -1,0 +1,15 @@
+CACHE MANIFEST
+
+# Build 2015-03-16. 01
+CACHE:
+#index.htm
+public/css/*
+public/js/*
+public/fonts/*
+public/img/*
+public/index.htm
+quote.jpeg
+
+NETWORK:
+http://*
+https://*
