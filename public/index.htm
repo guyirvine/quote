@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="quote.appcache">
+<html lang="en">
     <head>
 
       <meta charset="utf-8">
@@ -14,7 +14,8 @@
       <link rel="touch-startup-image" href="img/quote.jpeg" />
 
       <!-- Bootstrap -->
-      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="jquery-mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet">
 
       <title>guyirvine.com</title>
 
@@ -76,6 +77,8 @@
 
 	    @media (max-width : 480px) {
         #content {
+          left: 15px;
+          right: 15px;
           font-size: 2em;
         }
 
@@ -85,10 +88,20 @@
         }
 
         #contact li {
-          display: inline;
+          display: none;
         }
-        #contact a.handle {
+        #contact li.handle {
           display: block;
+        }
+
+        #pageone div.footer {
+          position: fixed;
+          bottom: 0px;
+          width: 100%;
+          text-align: center;
+          background-color: lightgrey;
+          opacity: 0.8;
+          padding: 0.5em;
         }
 
 	    }
@@ -98,15 +111,49 @@
     </head>
     <body>
 
+      <div data-role="page" id="pageone">
 
-        <div id="content"></div>
-        <div id="contact">
-            <ul>
-              <li><a href="http://twitter.com/#!/guyirvine" class="handle" title="www">@guyirvine</a></li>
-              <li>g: <a href="https://github.com/guyirvine" title="github">github.com/guyirvine</a></li>
-              <li>e: <a href="mailto:guy@guyirvine.com/" title="email">guy@guyirvine.com</a></li>
-            </ul>
+        <div data-role="main" class="ui-content">
+          <div id="content"></div>
         </div>
+
+        <div class="footer">
+          <a href="http://twitter.com/#!/guyirvine" class="handle" title="www">@guyirvine</a>
+        </div>
+
+      </div>
+
+      <div data-role="page" id="pagetwo">
+        <div data-role="header">
+          <h1>Welcome To My Homepage</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+          <p>Click on the link to see the slide effect REVERSED (slides to the previous page from left to right).</p>
+          <a href="#pageone" data-transition="slide" data-direction="reverse">Slide to Page One (reversed)</a>
+        </div>
+
+        <div data-role="footer">
+          <h1>Footer Text</h1>
+          <div id="contact">
+              <ul>
+                <li class="handle"><a href="http://twitter.com/#!/guyirvine" class="handle" title="www">@guyirvine</a></li>
+                <li>g: <a href="https://github.com/guyirvine" title="github">github.com/guyirvine</a></li>
+                <li>e: <a href="mailto:guy@guyirvine.com/" title="email">guy@guyirvine.com</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="bower_components/jquery/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+
 
         <script>
         var interval = 60000;
@@ -169,12 +216,29 @@
             }
 
             displayPhrase();
-            </script>
 
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <!-- Include all compiled plugins (below), or include individual files as needed -->
-            <script src="js/bootstrap.min.js"></script>
+
+            $("body").on("swipe",function(){
+              console.log( "Swipe Body" );
+            });
+
+            $("#content").on("click",function(){
+              console.log( "Click" );
+            });
+
+            $("#pageone").on("swipeleft",function(){
+              console.log( "Content Swipe Left" );
+//              $.mobile.changePage("#pagetwo", {transition : "slide", reverse:true});
+              $.mobile.changePage("#pagetwo", {transition : "slide"});
+            });
+
+            $("#pagetwo").on("swiperight",function(){
+              console.log( "Content Swipe Right" );
+//              $.mobile.changePage("#pagetwo", {transition : "slide", reverse:true});
+              $.mobile.changePage("#pageone", {transition : "slide", reverse:true});
+            });
+
+            </script>
 
     </body>
 </html>
