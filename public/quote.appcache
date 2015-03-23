@@ -6,6 +6,8 @@ public/css/*
 public/js/*
 public/fonts/*
 public/img/*
+public/bower_components/*
+public/jquery-mobile/*
 public/index.htm
 quote.jpeg
 
